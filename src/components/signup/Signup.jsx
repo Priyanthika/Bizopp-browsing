@@ -1,5 +1,6 @@
 import React , { useState }from 'react';
 import styled from 'styled-components';
+import axios from "axios";
 
 const Wrapper = styled.section`
   display: flex;
@@ -64,20 +65,53 @@ const Button = styled.button`
 
 const Signup = () => {
 
-  const [data, setData] = useState({
+  const registerState = ({
     email: "",
-    password: ""
+    name: "",
+    password: "",
+    password_confirmation: ""
   });
+
+  const [registerData, setRegisterData] = useState(registerState);
+  
   const handleSubmit = e => {
     e.preventDefault();
+    var data = {
+      email: registerData.email,
+      name: registerData.name,
+      password: registerData.password,
+      password_confirmation: registerData.password_confirmation
+    };
+    // axios
+    //   .post("http://ec2-18-189-20-28.us-east-2.compute.amazonaws.com/pilotrun/public/index.php/api/register", data)
+    //   .then(res => {
+    //       console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   })
+
+    axios({
+      method: "post",
+      url: `http://ec2-18-189-20-28.us-east-2.compute.amazonaws.com/pilotrun/public/index.php/api/users/register`,
+      data: registerData,
+      headers: {"Accept": "application/json"},
+    })
+    .then(response => {
+      console.log(response.data);
+      
+      window.location.href = "/login"
+    })
+    .catch(err => {
+      console.log(err);
+    })
     console.log(data);
-    setData('');
   };
 
   const handleChange = e => {
     e.preventDefault();
     const { name, value } = e.target;
-    setData(Object.assign(data, { [name]: value }));
+    setRegisterData( {...registerData, [name]: value });
   };
 
     return (
@@ -87,8 +121,8 @@ const Signup = () => {
           <h4>Sign up</h4>
           <Input
             type="text"
-            name="username"
-            placeholder="Username"
+            name="name"
+            placeholder="Name"
             onChange={handleChange}
             required
           />
@@ -103,6 +137,13 @@ const Signup = () => {
             type="password"
             name="password"
             placeholder="password"
+            onChange={handleChange}
+            required
+          />
+          <Input
+            type="password"
+            name="password_confirmation"
+            placeholder="Conform Password"
             onChange={handleChange}
             required
           />

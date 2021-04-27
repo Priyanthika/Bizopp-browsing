@@ -1,5 +1,7 @@
 import React , { useState } from 'react';
 import styled from 'styled-components';
+import DataService from '../../services/service';
+import axios from "axios";
 
 const Wrapper = styled.section`
   display: flex;
@@ -63,21 +65,71 @@ const Button = styled.button`
 
 
 const Login = () => {
-
-  const [dados, setDados] = useState({
+  const loginState = {
     email: "",
     password: ""
-  });
+  };
+
+  const [loginData, setLoginData] = useState(loginState);
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(dados);
+    var data = {
+      email: loginData.email,
+      password: loginData.password
+    };
+    // axios
+    //   .post("http://18.189.20.28/pilotrun/public/index.php/api/login", data)
+    //   .then(res => {
+    //       console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   })
+    if(data.email=="" || data.password==""){
+      alert("Please Insert Email and password!")
+        // Swal.fire('Oops...', 'Please Insert Email and password!', 'error')
+    }else {
+    axios({
+      method: "post",
+      url: `http://ec2-18-189-20-28.us-east-2.compute.amazonaws.com/pilotrun/public/index.php/api/users/login`,
+      data: loginData,
+      headers: {"content-type": "application/json"},
+    })
+    .then(response => {
+      console.log(response.data);
+      localStorage.setItem('status', response.data.data.status);
+      localStorage.setItem('token', response.data.data.token);
+      window.location.href = "/"
+    })
+    .catch(err => {
+      console.log(err);
+      alert(err)
+    })
+  }
+
+    console.log(data.email);
   };
 
   const handleChange = e => {
     e.preventDefault();
     const { name, value } = e.target;
-    setDados(Object.assign(dados, { [name]: value }));
+    setLoginData({ ...loginData, [name]: value });
   };
+
+  // const saveData = () => {
+  //   var data = {
+  //     email: loginData.email,
+  //     password: loginData.password
+  //   };
+
+  //   DataService.login(data)
+  //     .then(response => {
+  //       console.log(response.data);
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // };
 
     return (
       <div>
