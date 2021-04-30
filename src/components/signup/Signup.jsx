@@ -93,7 +93,7 @@ const Signup = () => {
 
     axios({
       method: "post",
-      url: `http://ec2-18-189-20-28.us-east-2.compute.amazonaws.com/pilotrun/public/index.php/api/users/register`,
+      url: `https://ec2-18-189-20-28.us-east-2.compute.amazonaws.com/pilotrun/public/index.php/api/users/register`,
       data: registerData,
       headers: {
         'Accept": "application/json'
