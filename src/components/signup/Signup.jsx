@@ -95,7 +95,11 @@ const Signup = () => {
       method: "post",
       url: `http://ec2-18-189-20-28.us-east-2.compute.amazonaws.com/pilotrun/public/index.php/api/users/register`,
       data: registerData,
-      headers: {"Accept": "application/json"},
+      headers: {
+        'Accept": "application/json'
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS', 
+      },
     })
     .then(response => {
       console.log(response.data);
