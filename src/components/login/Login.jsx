@@ -91,7 +91,7 @@ const Login = () => {
     }else {
     axios({
       method: "post",
-      url: `http://ec2-18-189-20-28.us-east-2.compute.amazonaws.com/pilotrun/public/index.php/api/users/login`,
+      url: `https://ec2-18-189-20-28.us-east-2.compute.amazonaws.com/pilotrun/public/index.php/api/users/login`,
       data: loginData,
       headers: {"content-type": "application/json"},
     })
