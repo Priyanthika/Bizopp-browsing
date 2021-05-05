@@ -13,6 +13,9 @@ const Nav = styled.nav`
   .logo {
     padding: 15px 0;
     margin-left:200px;
+    font-weight: bold;
+    font-family: "Monospace";
+    font-size: 25px;
   }
 `;
  

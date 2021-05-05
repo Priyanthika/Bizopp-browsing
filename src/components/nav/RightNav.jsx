@@ -30,6 +30,12 @@ const Ul = styled.ul`
   }
 `;
 
+// const Login = () => {
+  // const loginState = {
+  //   email: "",
+  //   password: ""
+  // };
+
 const RightNav = ({ open }) => {
     return (
       <Ul open={open}>
