@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import img1 from './../../assets/img1.jpeg';
+import img2 from './../../assets/img2.jpeg';
 
 const MainContent = styled.div`
   background-color: white;
@@ -110,7 +112,7 @@ const Sidebar = styled.div`
   }
   .content3 {
     background-color: blue;
-    height: 800px;
+    height: 970px;
   }
 `;
 
@@ -171,13 +173,22 @@ const Dashboard = () => {
           <div className="cont1">
           <p>JOIN OUR Program Today and start advertising your Business Opportunities to our active members.</p>
           </div>
-          <div className="cont2">
+          <Row>
+        <Col>
+        <div className="cont2">
         <p>Promote to Real Opportunity Seekers even for Free.</p>
         <p>Custom Built 1:1 Traffic Exchange System.</p>
         <p>Memberships Start at only $10 a month.</p>
         <p>Simple but powerful Affiliate Program.</p>
         <p>5 ways to advertise and much more.</p>
         </div>
+        </Col>
+          <Col>
+          <div>
+        <img src={img1} alt="Image1" />
+        </div>
+          </Col>
+        </Row>
         <div className="cont3">
         <p>Bizopp Browsing is simple but effective 1:1 traffic exchange system that delivers traffic in real time. </p>
         <p>Fast and real opportunity seekers visiting your web pages. Targeted & Niche related members will see your ad Today!</p>
@@ -195,6 +206,8 @@ const Dashboard = () => {
         </Col>
         </Row>
         </div>
+        <Row>
+        <Col>
         <div className="cont5">
         <p>TESTIMONIALS SECTION</p>
         </div>
@@ -216,8 +229,12 @@ const Dashboard = () => {
         </div>
         <div className="cont9">
         <p>Promo TOOLS</p>
-        {/* <iframe src="https://www.youtube.com/embed/cWDJoK8zw58" />; */}
         </div>
+        </Col>
+        <Col>
+        <img src={img2} alt="Image2" />
+        </Col>
+        </Row>
         </MainContent>
        
       </Wrapper>

@@ -4,6 +4,7 @@ import Login from "../login/Login";
 import Signup from "../signup/Signup";
 import Navbar from '../nav/Navbar';
 import Dashboard from  '../dashboard/Dashboard';
+import Website from '../website/Website'
 
 const BaseRouter = () => {
     return (
@@ -16,6 +17,8 @@ const BaseRouter = () => {
                     component={() => <Login />} />
                 <Route exact path="/signup"
                     component={() => <Signup />} />
+                <Route exact path="/website"
+                    component={() => <Website />} />
             </Router>
         </div>
     )
